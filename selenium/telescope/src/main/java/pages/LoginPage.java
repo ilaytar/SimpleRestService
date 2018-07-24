@@ -26,5 +26,8 @@ public class LoginPage {
         return new TelescopeSearchPeoplePage();
     }
 
-
+    public TelescopeSearchPeoplePage loginVpn(String username, String password) {
+        SeleniumWebDriver.getInstance().get(String.format("https://%s:%s@telescope.epam.com", username, password));
+        return new TelescopeSearchPeoplePage();
+    }
 }

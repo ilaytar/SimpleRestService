@@ -1,9 +1,14 @@
 package pages;
 
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import util.SeleniumUtil;
 import webdriver.SeleniumWebDriver;
 
@@ -13,8 +18,12 @@ import java.util.NoSuchElementException;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class TelescopeSearchPeoplePage {
+    private WebDriver driver = SeleniumWebDriver.getInstance();
+    private TelescopeGlobalMenu telescopeGlobalMenu = new TelescopeGlobalMenu();
 
-    WebDriver driver = SeleniumWebDriver.getInstance();
+    public TelescopeGlobalMenu goToTelescopeGlobalMenu() {
+        return new TelescopeGlobalMenu();
+    }
 
     @FindBy(xpath = "//div[@class='modal-dialog']//button[@class='close']")
     private WebElement whatIsNewInTelescopeCloseButton;
@@ -27,8 +36,6 @@ public class TelescopeSearchPeoplePage {
 
     @FindBy(xpath = "//span[contains(@class,'pageCount')]")
     private WebElement pageCountLabel;
-
-    private String scroller = "//div[contains(@class,'ScrollPane__vthumb')]";
 
     private String personNameLabelList = "//div[contains(@class,'personName')]//div/a";
 
@@ -51,6 +58,7 @@ public class TelescopeSearchPeoplePage {
     private String filteringByLabel(String filterBy) {
         return String.format("//span[@facet='%s']", filterBy);
     }
+
 
     private Wait<WebDriver> wait = new FluentWait<>(driver)
             .withTimeout(30, SECONDS)
@@ -75,8 +83,7 @@ public class TelescopeSearchPeoplePage {
     }
 
     public TelescopeSearchPeoplePage scrollToElement(WebElement element) {
-        WebElement scrollerElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(scroller)));
-        SeleniumUtil.scrollToElement(scrollerElement, element);
+        SeleniumUtil.scrollToElement(element);
         wait.until(ExpectedConditions.visibilityOf(element));
         return this;
     }
@@ -84,7 +91,8 @@ public class TelescopeSearchPeoplePage {
     public TelescopeSearchPeoplePage searchForCitizens(String city) {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(cityCheckbox(city))));
         if (!element.isDisplayed())
-            scrollToElement(element);
+//            scrollToElement(element);
+            SeleniumUtil.scrollPageToElement(element);
         element.click();
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(filteringByLabel(city)))));
         return this;

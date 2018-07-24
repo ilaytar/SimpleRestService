@@ -1,24 +1,24 @@
 package util;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import webdriver.SeleniumWebDriver;
 
 public class SeleniumUtil {
-    static WebDriver driver = SeleniumWebDriver.getInstance();
+    private static WebDriver driver = SeleniumWebDriver.getInstance();
 
-    public static void scrollToElement(WebElement scroller, WebElement targetElement) {
+    public static void scrollToElement(WebElement targetElement) {
         Actions actions = new Actions(driver);
-        actions.moveToElement(targetElement).perform();
+        actions.moveToElement(targetElement).click().perform();
     }
 
     public static void scrollPageToElement(WebElement element) {
-        Point point = element.getLocation();
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
-        jse.executeScript("window.scrollBy(" + point.getX() + "," + point.getY() + ")");
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
     }
 
+    public static void click(WebElement element) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+    }
 }
