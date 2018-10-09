@@ -31,10 +31,10 @@ buildscript {
 
 cargo {
     containerId = 'tomcat9x'
+    port = 8084
 
     local {
-        homeDir = file('C:\\dev\\apache-tomcat-9.0.1')
-        //outputFile = file('build/logs/output.log')
+        homeDir = new File('src\\main\\resources\\apache-tomcat-9.0.12')
     }
 }
 
