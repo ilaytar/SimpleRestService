@@ -80,7 +80,7 @@ allure {
 
 test {
     useTestNG(){
-        options.suites file('D:\\EPAM\\restService\\src\\test\\resources\\testng.xml')
+        options.suites file('src\\test\\resources\\testng.xml')
     }
 
     doLast {
