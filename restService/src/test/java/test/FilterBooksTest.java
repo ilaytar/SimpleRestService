@@ -1,6 +1,5 @@
 package test;
 
-import dataaccess.CategoryDAO;
 import dataobject.Book;
 import dataobject.Category;
 import org.testng.Assert;
