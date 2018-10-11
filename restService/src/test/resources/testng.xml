@@ -5,6 +5,7 @@
     <test name = "restServiceTest">
         <classes>
             <class name = "test.ServiceTest" />
+            <class name = "test.FilterBooksTest" />
         </classes>
     </test>
 </suite>
