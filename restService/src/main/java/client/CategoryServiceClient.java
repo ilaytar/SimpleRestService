@@ -6,24 +6,19 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.apache.log4j.Logger;
-import service.CategoryService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 
 public class CategoryServiceClient {
 
     public CategoryServiceClient() {
-        RestAssured.baseURI = "http://localhost:8080";
+        RestAssured.baseURI = "http://localhost:8084";
         RestAssured.basePath = "/restService/categories";
     }
 
     private Logger log = Logger.getLogger(CategoryServiceClient.class);
-    private CategoryService service = new CategoryService();
 
     public Response addCategory(Category category) {
         log.info("Adding category with id = " + category.getCategoryId());
