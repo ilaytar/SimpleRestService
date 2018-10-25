@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name = "RestServiceTestSuite">
+    <listeners>
+        <listener class-name="test.SuiteListener"/>
+    </listeners>
     <test name = "restServiceTest">
         <classes>
             <class name = "test.ServiceTest" />
