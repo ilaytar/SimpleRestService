@@ -3,10 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        dir(path: 'restService') {
-          powershell(script: 'gradle war cargoRedeployLocal cargoStartLocal', returnStatus: true, returnStdout: true)
-        }
-
+        dir(path: 'restService')
+        powershell(script: 'gradle war cargoRedeployLocal cargoStartLocal', returnStatus: true, returnStdout: true)
+        sh 'ls'
       }
     }
     stage('Test') {
