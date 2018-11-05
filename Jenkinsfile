@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        powershell(script: 'gradle test cargoStopLocal', returnStatus: true, returnStdout: true)
+        sh 'gradle test cargoStopLocal'
       }
     }
   }
