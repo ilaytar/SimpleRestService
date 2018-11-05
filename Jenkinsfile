@@ -5,6 +5,7 @@ pipeline {
       steps {
         sh 'ls'
         sh 'cd restService '
+        sh 'ls'
         sh 'gradle war cargoRedeployLocal cargoStartLocal'
       }
     }
