@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'ls'
-        sh 'cd restService && java -version'
+        sh 'cd restService && java -version && gradle -version'
         sh 'ls'
         sh 'gradle war cargoRedeployLocal cargoStartLocal'
       }
