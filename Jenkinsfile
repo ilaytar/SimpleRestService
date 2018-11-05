@@ -6,6 +6,7 @@ pipeline {
         sh 'ls'
         powershell(script: 'cd restService gradle war cargoRedeployLocal cargoStartLocal', returnStatus: true, returnStdout: true)
         dir(path: './restService')
+        sh 'cd restService gradle war'
       }
     }
     stage('Test') {
