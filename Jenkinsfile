@@ -4,14 +4,14 @@ pipeline {
     stage('Build') {
       steps {
         dir(path: '/restService') {
-          bat(script: 'gradle war cargoRedeployLocal cargoStartLocal', returnStatus: true, returnStdout: true)
+          powershell(script: 'gradle war cargoRedeployLocal cargoStartLocal', returnStatus: true, returnStdout: true)
         }
 
       }
     }
     stage('Test') {
       steps {
-        bat(script: 'gradle test cargoStopLocal', returnStatus: true, returnStdout: true)
+        powershell(script: 'gradle test cargoStopLocal', returnStatus: true, returnStdout: true)
       }
     }
   }
