@@ -4,7 +4,8 @@ pipeline {
     stage('Build') {
       steps {
         sh 'ls'
-        sh 'cd restService gradle war cargoRedeployLocal cargoStartLocal'
+        sh 'cd restService '
+        sh 'gradle war cargoRedeployLocal cargoStartLocal'
       }
     }
     stage('Test') {
