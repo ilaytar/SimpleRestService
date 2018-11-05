@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    docker {
+      image '4.10.2-jdk8'
+    }
+
+  }
   stages {
     stage('Build') {
       steps {
