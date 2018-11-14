@@ -5,8 +5,15 @@ pipeline {
     }
 
   }
+
+  def configureEnvBeforeBuild(String toolName) {
+      def currentBuildToolHome = tool toolName
+      env.PATH = "${currentBuildToolHome}/bin:${env.PATH}"
+  }
+
   stages {
     stage('Build') {
+    configureEnvBeforeBuild('gradle')
       steps {
         sh 'ls'
         sh 'cd restService && java -version && gradle -version'
