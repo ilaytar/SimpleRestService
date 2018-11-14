@@ -6,13 +6,10 @@ pipeline {
 
   }
 
-  def configureEnvBeforeBuild(String toolName) {
-      def currentBuildToolHome = tool toolName
-      env.PATH = "${currentBuildToolHome}/bin:${env.PATH}"
-  }
-
   stages {
     stage('Build') {
+    def currentBuildToolHome = tool 'gradle'
+    env.PATH = "${currentBuildToolHome}/bin:${env.PATH}"
     configureEnvBeforeBuild('gradle')
       steps {
         sh 'ls'
