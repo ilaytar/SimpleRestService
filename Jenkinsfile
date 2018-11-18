@@ -1,13 +1,11 @@
 pipeline {
   agent any
-  tools {
-     gradle 'gradle'
-  }
   stages {
     stage('startService') {
       parallel {
         stage('build') {
           steps {
+            sh 'gradle --version'
             sh 'gradle war'
           }
         }
@@ -33,5 +31,8 @@ pipeline {
         sh 'gradle cargoStopLocal'
       }
     }
+  }
+  tools {
+    gradle 'gradle'
   }
 }
