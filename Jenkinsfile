@@ -5,8 +5,10 @@ pipeline {
       parallel {
         stage('build') {
           steps {
-            sh 'gradle --version'
-            sh 'gradle war'
+            dir(path: '/restService') {
+              sh 'gradle war'
+            }
+
           }
         }
         stage('deploy') {
