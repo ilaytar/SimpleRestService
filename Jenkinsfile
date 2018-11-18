@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('build') {
           steps {
-            dir(path: '/restService') {
+            dir(path: 'restService') {
               sh 'gradle war'
             }
 
