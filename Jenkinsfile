@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('startService') {
       parallel {
-        stage('build') {
+        stage('war') {
           steps {
             dir(path: 'restService') {
               sh 'gradle war'
@@ -13,24 +13,36 @@ pipeline {
         }
         stage('deploy') {
           steps {
-            sh 'gradle cargoRedeployLocal '
+            dir(path: 'restService') {
+              sh 'gradle cargoRedeployLocal '
+            }
+
           }
         }
         stage('start') {
           steps {
-            sh 'gradle cargoStartLocal'
+            dir(path: 'restService') {
+              sh 'gradle cargoStartLocal'
+            }
+
           }
         }
       }
     }
     stage('test') {
       steps {
-        sh 'gradle clean test'
+        dir(path: 'restService') {
+          sh 'gradle clean test'
+        }
+
       }
     }
     stage('stopService') {
       steps {
-        sh 'gradle cargoStopLocal'
+        dir(path: 'restService') {
+          sh 'gradle cargoStopLocal'
+        }
+
       }
     }
   }
