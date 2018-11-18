@@ -1,4 +1,0 @@
-rootProject.name = 'selenium'
-include 'core'
-include 'telescope'
-
