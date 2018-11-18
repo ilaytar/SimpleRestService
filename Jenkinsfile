@@ -1,11 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'gradle'
-    }
-
-  }
-
+agent any
   stages {
     stage('Build') {
     def currentBuildToolHome = tool 'gradle'
