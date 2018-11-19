@@ -1,0 +1,20 @@
+version: "1"
+
+services:
+  tomcat:
+    image: tomcat:9.0.13-jre8
+    container_name: tomcat
+    ports:
+        - 8084
+    hostname: tomcat
+	links:
+        - mongodb:mongo
+            
+  mongodb:
+    image: mongo
+    container_name: mongo
+    ports:
+        - 27017
+    hostname: mongo  
+    
+  
