@@ -7,10 +7,8 @@ services:
     ports:
         - 8084
     hostname: tomcat
-	links:
-        - mongodb:mongo
             
-  mongodb:
+mongodb:
     image: mongo
     container_name: mongo
     ports:
