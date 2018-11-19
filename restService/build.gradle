@@ -30,7 +30,7 @@ buildscript {
 }
 
 cargo {
-    containerId = 'tomcat9x'
+    containerId = 'tomcat'
     port = 8084
     type = remote
 
