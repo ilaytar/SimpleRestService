@@ -1,37 +1,48 @@
 pipeline {
   agent any
-  tools {
-     gradle 'gradle'
-  }
   stages {
-    stage('startService') {
-      parallel {
-        stage('build') {
-          steps {
-            sh 'gradle war'
-          }
+    stage('war') {
+      steps {
+        dir(path: 'restService') {
+          sh 'gradle war'
         }
-        stage('deploy') {
-          steps {
-            sh 'gradle cargoRedeployLocal '
-          }
+
+      }
+    }
+    stage('deploy') {
+      steps {
+        dir(path: 'restService') {
+          sh 'gradle cargoRedeployLocal'
         }
-        stage('start') {
-          steps {
-            sh 'gradle cargoStartLocal'
-          }
+
+      }
+    }
+    stage('start') {
+      steps {
+        dir(path: 'restService') {
+          sh 'gradle cargoStartLocal'
         }
+
       }
     }
     stage('test') {
       steps {
-        sh 'gradle clean test'
+        dir(path: 'restService') {
+          sh 'gradle clean test'
+        }
+
       }
     }
-    stage('stopService') {
+    stage('stop') {
       steps {
-        sh 'gradle cargoStopLocal'
+        dir(path: 'restService') {
+          sh 'gradle cargoStopLocal'
+        }
+
       }
     }
+  }
+  tools {
+    gradle 'gradle'
   }
 }
