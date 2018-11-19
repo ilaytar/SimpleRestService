@@ -32,10 +32,11 @@ buildscript {
 cargo {
     containerId = 'tomcat9x'
     port = 8084
+    type = remote
 
-    local {
-        homeDir = new File('src\\main\\resources\\apache-tomcat-9.0.12')
-    }
+//    local {
+//        homeDir = new File('src\\main\\resources\\apache-tomcat-9.0.12')
+//    }
 }
 
 dependencies {
