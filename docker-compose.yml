@@ -1,19 +1,24 @@
-version: "1"
+version: "3"
 
 services:
-  tomcat:
+
+jenkinsci-blueocean:
+  image: jenkinsci/blueocean
+    container_name: jenkinsci-blueocean
+    ports:
+        - 8080:8080
+    
+tomcat:
     image: tomcat:9.0.13-jre8
     container_name: tomcat
     ports:
-        - 8084
-    hostname: tomcat
-   
+        - 8084:8084
+    hostname: tomcat   
    
 mongodb:
     image: mongo
     container_name: mongo
     ports:
-        - 27017
+        - 27017:27017
     hostname: mongo  
     
-  
