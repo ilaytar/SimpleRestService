@@ -4,7 +4,7 @@ pipeline {
     stage('war') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle build war'
+          sh 'gradle clean war'
         }
 
       }
