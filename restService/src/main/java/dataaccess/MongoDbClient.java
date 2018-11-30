@@ -10,7 +10,7 @@ public class MongoDbClient {
     private static MongoClient client;
 
     public MongoDbClient() {
-        ServerAddress serverAddress = new ServerAddress();
+        ServerAddress serverAddress = new ServerAddress("mongodb");
         client = new MongoClient(serverAddress);
 
         client.getDatabase("service");
