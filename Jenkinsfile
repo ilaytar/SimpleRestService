@@ -21,9 +21,9 @@ pipeline {
       steps {
         dir(path: 'restService') {
           sh 'gradle test'
+          sh 'gradle allureReport'
         }
 
-        sh 'gradle allureReport'
       }
     }
   }
