@@ -12,7 +12,7 @@ pipeline {
     stage('deploy') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle cargoDeployRemote --stacktrace'
+          sh 'gradle cargoRedeployRemote --stacktrace'
         }
 
       }
