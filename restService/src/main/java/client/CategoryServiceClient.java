@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.given;
 public class CategoryServiceClient {
 
     public CategoryServiceClient() {
-        RestAssured.baseURI = "http://localhost:8084";
+        RestAssured.baseURI = "http://tomcat:8080";
         RestAssured.basePath = "/restService/categories";
     }
 
