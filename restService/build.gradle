@@ -30,7 +30,7 @@ buildscript {
 }
 
 cargo {
-    containerId = 'a029147b4a31'
+    containerId = 'tomcat8x'
     port = 8080
 
     deployable {
