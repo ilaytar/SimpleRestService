@@ -20,6 +20,13 @@ pipeline {
     stage('test') {
       steps {
         dir(path: 'restService') {
+			script {
+            allure([
+                    includeProperties: false,
+                    jdk: '',                  
+                    results: [[path: 'build/allure-results']]
+            ])
+            }
           sh 'gradle test --stacktrace'
         }
 
