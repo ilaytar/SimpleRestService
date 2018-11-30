@@ -20,7 +20,7 @@ pipeline {
     stage('test') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle test'
+          sh 'gradle test --stacktrace'
         }
 
       }
