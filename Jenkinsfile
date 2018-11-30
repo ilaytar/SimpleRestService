@@ -12,15 +12,7 @@ pipeline {
     stage('deploy') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle cargoDeployRemote'
-        }
-
-      }
-    }
-    stage('start') {
-      steps {
-        dir(path: 'restService') {
-          sh 'gradle cargoStartLocal'
+          sh 'gradle cargoDeployRemote --stacktrace'
         }
 
       }
@@ -28,15 +20,7 @@ pipeline {
     stage('test') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle clean test'
-        }
-
-      }
-    }
-    stage('stop') {
-      steps {
-        dir(path: 'restService') {
-          sh 'gradle cargoStopLocal'
+          sh 'gradle test --stacktrace'
         }
 
       }
