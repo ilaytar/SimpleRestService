@@ -30,11 +30,13 @@ buildscript {
 }
 
 cargo {
-    containerId = 'tomcat'
+    containerId = 'a029147b4a31'
     port = 8080
-    remote.hostname = 'tomcat'
-    remote.username = 'admin'
-    remote.password = 'admin'
+    remote {
+        hostname = 'tomcat'
+        username = 'admin'
+        password = 'admin'
+    }
 }
 
 dependencies {
