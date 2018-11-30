@@ -23,6 +23,7 @@ pipeline {
           sh 'gradle test'
         }
 
+        sh 'gradle allureReport'
       }
     }
   }
