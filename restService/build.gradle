@@ -33,11 +33,6 @@ cargo {
     containerId = 'tomcat8x'
     port = 8080
 
-//    deployable {
-//        file = file('build/libs/restService.war')
-//        context = 'web-app'
-//    }
-
     remote {
         hostname = 'tomcat'
         username = 'admin'

@@ -3,19 +3,13 @@ package dataaccess;
 import dataobject.Book;
 import dataobject.Category;
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Key;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 
-import java.util.*;
+import java.util.List;
 
 public class CategoryDAO {
-    private static Map<String, Category> categoryMap =
-            new HashMap<String, Category>();
-    private static Map<String, Collection<Book>> bookMap =
-            new HashMap<String, Collection<Book>>();
     private static Datastore datastore = new MorphiaDatastore().getDatastore();
-
 
     public void addCategory(Category category) {
         datastore.save(category);
