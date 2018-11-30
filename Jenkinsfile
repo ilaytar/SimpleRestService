@@ -4,7 +4,7 @@ pipeline {
     stage('war') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle war'
+          sh 'gradle clean war'
         }
 
       }
@@ -12,7 +12,7 @@ pipeline {
     stage('deploy') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle cargoRedeployLocal'
+          sh 'gradle cargoDeployRemote'
         }
 
       }
