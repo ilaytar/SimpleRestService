@@ -22,6 +22,13 @@ pipeline {
         dir(path: 'restService') {
           sh 'gradle test'
           sh 'gradle allureReport'
+          script {
+            allure includeProperties: false,
+            jdk: '',
+            report: "build/allure-report/",
+            results: [[path: "build/allure-results/"]]
+          }
+
         }
 
       }
