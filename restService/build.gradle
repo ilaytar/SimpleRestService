@@ -86,9 +86,5 @@ test {
     useTestNG(){
         options.suites file('src\\test\\resources\\testng.xml')
     }
-
-    doLast {
-        tasks.allureReport.execute()
-    }
 }
 
