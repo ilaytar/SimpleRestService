@@ -17,23 +17,10 @@ pipeline {
 
       }
     }
-    stage('start') {
-      steps {
-        dir(path: 'restService')
-      }
-    }
     stage('test') {
       steps {
         dir(path: 'restService') {
-          sh 'gradle clean test'
-        }
-
-      }
-    }
-    stage('stop') {
-      steps {
-        dir(path: 'restService') {
-          sh 'gradle cargoStopLocal'
+          sh 'gradle test'
         }
 
       }
