@@ -31,11 +31,10 @@ buildscript {
 
 cargo {
     containerId = 'tomcat'
-    port = 8084
-
-//    local {
-//        homeDir = new File('src\\main\\resources\\apache-tomcat-9.0.12')
-//    }
+    port = 8080
+    remote.hostname = 'tomcat'
+    remote.username = 'admin'
+    remote.password = 'admin'
 }
 
 dependencies {
